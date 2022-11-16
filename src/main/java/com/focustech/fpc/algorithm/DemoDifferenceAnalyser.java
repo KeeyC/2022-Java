@@ -13,7 +13,7 @@ import static java.util.Objects.hash;
  * @author KeC
  **/
 public class DemoDifferenceAnalyser implements IDifferenceAnalyser{
-    final static int fileCutNum = 300;
+    final static int fileCutNum = 100;
 
 
     @Override
@@ -147,7 +147,7 @@ public class DemoDifferenceAnalyser implements IDifferenceAnalyser{
         @Override
         public  synchronized void run(){
 
-              final  int fileCutNum = 300;
+              final  int fileCutNum = 100;
               try {
                   String destLine;
                   int count = 0;
