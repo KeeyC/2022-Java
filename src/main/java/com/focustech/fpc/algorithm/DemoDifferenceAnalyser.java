@@ -10,10 +10,10 @@ import static java.util.Objects.hash;
 
 /**
  * 差异分析器实现类示例
- * @author KeCheng
+ * @author KeC
  **/
 public class DemoDifferenceAnalyser implements IDifferenceAnalyser{
-    final static int fileCutNum = 100;
+    final static int fileCutNum = 300;
 
 
     @Override
@@ -64,8 +64,8 @@ public class DemoDifferenceAnalyser implements IDifferenceAnalyser{
                */
                long timeStart1 = System.currentTimeMillis();
 
-               DestToFile threadOne = new DestToFile(dest);
-               DestToFile threadTwo = new DestToFile(origin);
+               ToFile threadOne = new ToFile(dest);
+               ToFile threadTwo = new ToFile(origin);
                threadOne.start();
                threadTwo.start();
                threadOne.join();
@@ -136,20 +136,18 @@ public class DemoDifferenceAnalyser implements IDifferenceAnalyser{
     }
 
 
-    class DestToFile extends Thread{
+    class ToFile extends Thread{
 
+     private BufferedReader dest;
 
-
-       private BufferedReader dest;
-
-      public   DestToFile(BufferedReader bufferedReader){
+      public   ToFile(BufferedReader bufferedReader){
             dest = bufferedReader;
         }
 
         @Override
         public  synchronized void run(){
 
-              final  int fileCutNum = 100;
+              final  int fileCutNum = 300;
               try {
                   String destLine;
                   int count = 0;
